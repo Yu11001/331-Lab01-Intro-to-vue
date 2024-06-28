@@ -8,7 +8,7 @@ createApp({
         const description = ref('Boots is a cosmetics shop')
         const image = ref('./assets/images/socks_green.jpg')
         const productName = ref('http://www.camt.cmu.ac.th')
-        const inStock = ref(false)
+        const inStock = ref(true)
         const inventory = ref(10)
         const onSale = ref(true)
         const details = ref([
@@ -36,7 +36,8 @@ createApp({
         }
 
         function changeStatus(){
-            inStock = !inStock
+            inStock.value = !inStock.value
+            console.log(inStock)
         }
 
         return{

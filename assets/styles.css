@@ -5,6 +5,14 @@ body {
   color: #282828;
 }
 
+.color-circle {
+  width: 50px;
+  height: 50px;
+  margin-top: 8px;
+  border:2px solid #d8d8d8;
+  border-radius: 50%;
+}
+
 .button {
   margin: 30px;
   background-color: #39495c;
@@ -19,6 +27,11 @@ body {
     inset 0 0 0em 0.05em rgba(255, 255, 255, 0.12);
   text-align: center;
   cursor: pointer;
+}
+
+.disabledButton{
+  background-color: #d8d8d8;
+  cursor: not-allowed;
 }
 
 .cart {
@@ -88,7 +101,7 @@ li {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
 }
 
-.out-of-stock-img {
+.outOfStockImg {
   opacity:0.5
 }
 
