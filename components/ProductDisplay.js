@@ -27,6 +27,7 @@ const productDisplay = {
 
         <button class="button" :disabled='!inStock' @click="addToCart" :class="{disabledButton: !inStock}">Add To Cart</button>
         <button class="button" @click="changeStatus">Change Stock</button>
+        <button class="button" @click="removeFromCart">Remove from Cart</button>
 
     </div>
 </div>
@@ -35,7 +36,7 @@ const productDisplay = {
     props:{
         premium: Boolean
     },
-    setup(props){
+    setup(props, { emit }){
 
         const shipping = computed(() =>{
             if(props.premium){
@@ -85,7 +86,7 @@ const productDisplay = {
         const cart = ref(0)
 
         function addToCart(){
-            cart.value += 1;
+            emit('add-to-cart', variants.value[selectedVariant.value].id)
         }
 
         function updateImage(variantImage){
@@ -95,6 +96,10 @@ const productDisplay = {
         function changeStatus(){
             inStock.value = !inStock.value
             console.log(inStock)
+        }
+
+        function removeFromCart(){
+            emit('remove-from-cart',variants.value[selectedVariant.value].id)
         }
 
         const title = computed(() =>{
@@ -127,7 +132,8 @@ const productDisplay = {
             changeStatus,
             updateVariant,
             salesStatus,
-            shipping
+            shipping,
+            removeFromCart
         }
     }
 }
